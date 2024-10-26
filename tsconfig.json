@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "allowJs": false, // Nếu bạn không muốn biên dịch file .js
+    "checkJs": false // Nếu bạn không muốn kiểm tra file .js
+  },
+  "include": ["src/**/*"], // Thay đổi theo cấu trúc thư mục của bạn
+  "exclude": ["node_modules", "**/*.spec.ts"] // Loại trừ các file không cần thiết
+}
