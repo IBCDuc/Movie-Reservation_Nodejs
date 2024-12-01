@@ -16,14 +16,23 @@ export class Movie {
   @Column({ type: 'nvarchar', length: 2500 })
   description: string;
 
-  @Column({ type: 'nvarchar', length: 1000 })
-  genre: string;
-
   @Column({ type: 'int' })
   star: number;
 
   @Column({ type: 'int' })
   price: number;
+
+  @Column()
+  movie_date: Date;
+
+  @Column({type: 'nvarchar', length: 100})
+  genre: string;
+
+  @Column({type: 'nvarchar', length: 100})
+  duration: string;
+
+  @Column({type: 'nvarchar', length: 100})
+  language: string;
 
   @ManyToMany(() => Admin, (admin) => admin.movies)
   admins: Admin[];

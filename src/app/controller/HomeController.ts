@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { HomeModel } from "../../models/HomeModel";
 import UsersRepository from "../../repositories/UsersRepository";
-
+import { MovieService } from "../services/MovieService";
 
 export class HomeController {
   static async home(req: Request, res: Response) {
@@ -30,6 +30,18 @@ export class HomeController {
 
     } catch(err) {
       console.log(err);
+    }
+  }
+
+  static async getAllMovie(req: Request, res: Response) {
+    try {
+      const movieData = await MovieService.getAllMovie()
+      res.json(movieData)
+    } catch(err) {
+      res.status(404).json({
+        message: "connecting error occured",
+        err,
+      })
     }
   }
 }

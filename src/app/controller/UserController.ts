@@ -25,5 +25,15 @@ export class UserController {
       res.status(404);
 
     }
+    
+  }
+  static async updateUser(req: Request, res: Response) {
+    try {
+      await UserService.updateUser();
+      res.status(200).json({message: 'update thanhcong', status: "success"})
+    } catch (err) {
+      console.log(err);
+      res.status(404);
+    }
   }
 }

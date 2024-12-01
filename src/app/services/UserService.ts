@@ -8,5 +8,8 @@ export class UserService {
         const userDate = await UsersRepository.getUser();
         return userDate
     }
+    static async updateUser() {
+        await UsersRepository.updateUser()
+    }
 
 }
