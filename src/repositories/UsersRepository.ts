@@ -35,7 +35,7 @@ export default class UsersRepository {
         email: "sth@",
         password: "myside",
       })
-      .where("id = :id", { id: 1 })
+      .where("id = :id", { id: 7 })
       .execute();
     return updateUser;
   }
