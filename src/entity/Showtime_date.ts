@@ -1,21 +1,29 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
-import { ShowtimeHours } from './Showtime_hours';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  OneToMany,
+  JoinColumn
+} from 'typeorm';
 import { Movie } from './Movie';
+import { ShowtimeHours } from './Showtime_hours';
 
 @Entity('Showtime_date')
 export class ShowtimeDate {
   @PrimaryGeneratedColumn()
-  showtime_date_id: number;
+  Showtime_date_id: number;
 
-  @Column()
-  movie_id: number; // Khóa ngoại liên kết với Movie
+  @Column({ type: 'datetime', nullable: true })
+  Movie_date: Date;
 
-  @Column()
-  movie_date: Date; 
+  @Column( {type: 'nvarchar', length: 50, nullable: true} )
+  status: string;
 
-  @OneToMany(() => ShowtimeHours, (showtimeHours) => showtimeHours.showtime_date)
-  showtime_hours: ShowtimeHours[];
+  @ManyToOne(() => Movie, (movie) => movie.showtimeDates)
+  @JoinColumn({ name: "Movie_id" }) 
+  movie: Movie; 
 
-  @ManyToOne(() => Movie, (movie) => movie.showtime_dates)
-  movie: Movie;
+  @OneToMany(() => ShowtimeHours, (showtimeHours) => showtimeHours.showtimeDate)
+  showtimeHours: ShowtimeHours[];
 }

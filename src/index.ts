@@ -1,5 +1,6 @@
 import express from "express";
 import routes from "./routes";
+import { Movie } from "./entity/Movie";
 import morgan from "morgan";
 import "reflect-metadata";
 import bodyParser from "body-parser";
@@ -10,6 +11,7 @@ const app = express();
 
 const allowCors = cors({
   origin: "http://localhost:3000",
+  credentials: true,
 });
 
 app.use(morgan("combined"));
@@ -21,7 +23,8 @@ routes(app);
 
 AppDataSource.initialize()
   .then(async () => {
-    console.log("successfull connection");
+    console.log("successfull connection!");
+    const movieRepository = AppDataSource.getRepository(Movie);
   })
   .catch((error) => console.log(error));
 

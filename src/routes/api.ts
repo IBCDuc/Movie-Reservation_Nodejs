@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get("/get-user", UserController.getUser);
 router.get("/single-movie/:id", MovieController.getMovieBaseUrl)
-
+router.post("/add-user", UserController.addUser)
 
 export default router;

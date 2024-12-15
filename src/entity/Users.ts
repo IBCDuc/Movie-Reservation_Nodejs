@@ -21,6 +21,6 @@ export class User {
   @UpdateDateColumn()
   update_at: Date;
 
-  @OneToMany(() => Reservation, (reservation) => reservation.user)
+  @OneToMany(() => Reservation, (reservation) => reservation.User_id)
   reservations: Reservation[];
 }
