@@ -1,17 +1,18 @@
+import { Admin } from "typeorm";
 import { AppDataSource as dataSource } from "../data-source";
 import { User } from "../entity/Users";
 
 export default class UsersRepository {
-  static async addUser(userData) {
+  static async addUser(User_name, Email, Password) {
     await dataSource
       .createQueryBuilder()
       .insert()
       .into(User)
       .values([
         {
-          user_name: userData.name,
-          email: userData.email,
-          password: userData.password,
+          user_name: User_name,
+          email: Email,
+          password: Password,
           create_at: new Date().toISOString().split('T')[0],
           update_at: null,
         },
@@ -21,11 +22,13 @@ export default class UsersRepository {
   static async getUser() {
     const user = await dataSource
       .getRepository(User)
-      .createQueryBuilder("user")
+      .createQueryBuilder("users")
       .getMany();
 
-    return user;
-  }
+    return {data: user,
+            total: user.length
+};
+  } 
   static async updateUser() {
     const updateUser = await dataSource
       .createQueryBuilder()
@@ -39,13 +42,15 @@ export default class UsersRepository {
       .execute();
     return updateUser;
   }
-  static async deleteUser() {
+  static async deleteUser(id) {
     const deleteUser = await dataSource
       .createQueryBuilder()
       .delete()
       .from(User)
-      .where("id = :id", { id: 1 })
+      .where("User_id = :id", { id: id })
       .execute();
     return deleteUser;
   }
+
+
 }

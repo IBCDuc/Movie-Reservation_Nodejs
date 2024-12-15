@@ -10,5 +10,9 @@ export class MovieService {
         const movie = await MovieRepository.getMovieById(id)
         return movie
     }
+    static async getMovieSearch(queryRT: string) {
+        const movieRes = await MovieRepository.getMovieSearch(queryRT)
+        return movieRes
+    }
 
 }

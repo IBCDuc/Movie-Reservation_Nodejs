@@ -17,15 +17,14 @@ export class HomeController {
         message: "connecting error occured",
         err,
       });
-    }
+    }                                                                                                                                                                                                                                                  
   }
   static async pageProducts(req: Request, res: Response) {
     try {
       console.log(req.body)
-      const {name , email, password} = req.body
+      const {User_name , Email, Password} = req.body
       
-      const info = {name, email, password}
-      const user = await UsersRepository.addUser(info)
+      const user = await UsersRepository.addUser(User_name , Email, Password)
       console.log(user)
 
     } catch(err) {
@@ -35,7 +34,7 @@ export class HomeController {
 
   static async getAllMovie(req: Request, res: Response) {
     try {
-      const movieData = await MovieService.getAllMovie()
+      const movieData = await MovieService.getAllMovie()      
       res.json(movieData)
     } catch(err) {
       res.status(404).json({

@@ -1,22 +1,25 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Reservation } from './Reservation';
 
 @Entity('Report')
 export class Report {
   @PrimaryGeneratedColumn()
-  report_id: number;
+  Report_id: number;
 
-  @Column()
-  reservation_id: number; // Khóa ngoại liên kết với Reservation
-
-  @Column()
+  @Column({ type: 'int', nullable: true })
   ticket_sell: number;
 
-  @Column()
+  @Column({ type: 'int', nullable: true })
   total_revenue: number;
 
-  // Mối quan hệ với Reservation
-  @OneToOne(() => Reservation, (reservation) => reservation.report)
-  @JoinColumn({ name: 'reservation_id' }) // Chỉ định khóa ngoại
+  // Relationship with Reservation
+  @ManyToOne(() => Reservation, (reservation) => reservation.reports, { nullable: false })
+  @JoinColumn({ name: 'Reservation_id' })
   reservation: Reservation;
 }

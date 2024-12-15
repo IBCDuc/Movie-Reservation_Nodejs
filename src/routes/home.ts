@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get("/fake-api", HomeController.home);
 router.get("/haha", HomeController.pageProducts)
-router.get("/api/movies", HomeController.getAllMovie )
+router.get("/api/movies", HomeController.getAllMovie)
 
 export default router;

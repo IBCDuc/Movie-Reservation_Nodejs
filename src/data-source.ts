@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { User } from "./entity/Users";
+import { User } from "./entity/Users"
 import { Admin } from "./entity/Admin";
 import { Movie } from "./entity/Movie";
 import { Report } from "./entity/Report";
@@ -7,6 +7,7 @@ import { Reservation } from "./entity/Reservation";
 import { SeatSlot } from "./entity/Seat_slot";
 import { ShowtimeDate } from "./entity/Showtime_date";
 import { ShowtimeHours } from "./entity/Showtime_hours";
+
 import * as dotenv from 'dotenv'
 
 const result = dotenv.config()

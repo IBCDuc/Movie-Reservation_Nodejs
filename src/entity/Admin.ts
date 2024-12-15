@@ -1,21 +1,27 @@
 import {
-    Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn,
-    ManyToOne, OneToMany, JoinColumn, OneToOne, JoinTable, ManyToMany
-  } from 'typeorm';
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { Movie } from './Movie';
+
 @Entity('Admin')
 export class Admin {
   @PrimaryGeneratedColumn()
   admin_id: number;
 
   @Column({ type: 'nvarchar', length: 100 })
-  admin_name: string;
+  Admin_name: string;
 
   @Column({ type: 'nvarchar', length: 256 })
-  admin_email: string;
+  Admin_email: string;
 
   @Column({ type: 'nvarchar', length: 256 })
-  password: string;
+  Password: string;
 
   @CreateDateColumn()
   create_at: Date;
@@ -25,9 +31,9 @@ export class Admin {
 
   @ManyToMany(() => Movie, (movie) => movie.admins)
   @JoinTable({
-    name: 'manage', // tên bảng trung gian
-    joinColumn: { name: 'admin_id', referencedColumnName: 'admin_id' }, // khóa ngoại từ bảng Admin
-    inverseJoinColumn: { name: 'movie_id', referencedColumnName: 'movie_id' } // khóa ngoại từ bảng Movie
+    name: 'manage', // Tên bảng trung gian
+    joinColumn: { name: 'admin_id', referencedColumnName: 'admin_id' }, // Khóa ngoại từ bảng Admin
+    inverseJoinColumn: { name: 'Movie_id', referencedColumnName: 'Movie_id' }, // Khóa ngoại từ bảng Movie
   })
   movies: Movie[];
 }
