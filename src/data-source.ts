@@ -7,11 +7,9 @@ import { Reservation } from "./entity/Reservation";
 import { SeatSlot } from "./entity/Seat_slot";
 import { ShowtimeDate } from "./entity/Showtime_date";
 import { ShowtimeHours } from "./entity/Showtime_hours";
-
+import { CinemaRoom } from "./entity/Cinema";
 import * as dotenv from 'dotenv'
-
 const result = dotenv.config()
-
 //debug test
 if (result.error) {
   throw result.error
@@ -26,7 +24,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_DATABASE,
   synchronize: process.env.DB_SYNCHRONIZE === 'true', 
   logging: process.env.DB_LOGGING === 'true', 
-  entities: [User, Admin, Movie, Report, Reservation, SeatSlot, ShowtimeDate, ShowtimeHours],
+  entities: [User, Admin, Movie, Report, Reservation, SeatSlot, ShowtimeDate, ShowtimeHours, CinemaRoom],
   subscribers: [],
   migrations: [],
   extra: {

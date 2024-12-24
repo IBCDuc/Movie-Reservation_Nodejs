@@ -11,8 +11,8 @@ export class ShowtimeHoursService {
         return await ShowtimeHoursRepository.getShowTimeDate()
     }
 
-    static async addHour(showtime_date_id, hour) {
-        return ShowtimeHoursRepository.addHour(showtime_date_id, hour)
+    static async addHour(showtime_date_id, hour,cinema_id) {
+        return ShowtimeHoursRepository.addHour(showtime_date_id, hour, cinema_id)
     }
 
 }

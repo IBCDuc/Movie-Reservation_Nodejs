@@ -10,4 +10,14 @@ export default class AdminRepository {
           .getMany()
     return getAdmin
   }
+
+    static async loginAdmin(email, password) {
+      const admin = await dataSource
+        .getRepository(Admin)
+        .createQueryBuilder("admin")
+        .where("Admin_email = :email", { email: email })
+        .andWhere("Password = :password", { password: password })
+        .getOne();
+      return admin;
+    }
 }

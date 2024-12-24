@@ -12,9 +12,9 @@ export class ShowtimeHoursController {
         }
     }
     static async addHour(req: Request, res: Response) {
-        const {showtime_date_id, hour} = req.body
+        const {showtime_date_id, hour, cinema_id} = req.body
         try {
-            const resHour = await ShowtimeHoursService.addHour(showtime_date_id, hour)
+            const resHour = await ShowtimeHoursService.addHour(showtime_date_id, hour, cinema_id)
             res.json(resHour)
         } catch(err) {
             res.status(404).json("something wrong here hours!")

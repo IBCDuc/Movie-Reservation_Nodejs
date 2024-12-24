@@ -8,4 +8,9 @@ export class AdminService {
         return await AdminRepository.getAdmin()
     }
 
+        static async loginAdmin(email, password) {
+            const user = await AdminRepository.loginAdmin(email, password);
+            return user;
+        }
+
 }

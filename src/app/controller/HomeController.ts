@@ -22,9 +22,9 @@ export class HomeController {
   static async pageProducts(req: Request, res: Response) {
     try {
       console.log(req.body)
-      const {User_name , Email, Password} = req.body
+      const {User_name, Email, Password, Address, phone} = req.body
       
-      const user = await UsersRepository.addUser(User_name , Email, Password)
+      const user = await UsersRepository.addUser(User_name, Email, Password, Address, phone)
       console.log(user)
 
     } catch(err) {
