@@ -12,7 +12,12 @@ export class ShowtimeHoursService {
     }
 
     static async addHour(showtime_date_id, hour,cinema_id) {
-        return ShowtimeHoursRepository.addHour(showtime_date_id, hour, cinema_id)
+        try {
+            return ShowtimeHoursRepository.addHour(showtime_date_id, hour, cinema_id)
+        }
+        catch (err) {
+            throw new Error(err) 
     }
 
+}
 }
